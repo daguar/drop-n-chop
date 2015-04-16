@@ -11,6 +11,7 @@ describe("L.DNC.DropZone.FileReader > ", function () {
         var fileReader = null;
 
         beforeEach(function () {
+            console.debug = function(){};
             fileReader = new L.DNC.DropZone.FileReader( map, fakeOptions );
         });
 
