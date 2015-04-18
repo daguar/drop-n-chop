@@ -1,4 +1,5 @@
 if (!Array.prototype.map) {
+    // Add map() to array
     Array.prototype.map = function (fun /*, thisp */) {
         "use strict";
 
@@ -25,4 +26,25 @@ if (!Array.prototype.map) {
 
         return res;
     };
+}
+
+if (!HTMLElement.prototype.click) {
+    // Add click() to HTMLElement
+    HTMLElement.prototype.click = function() {
+        var ev = document.createEvent('MouseEvent');
+        ev.initMouseEvent(
+            'click',
+            /*bubble*/true, /*cancelable*/true,
+            window, null,
+            0, 0, 0, 0, /*coordinates*/
+            false, false, false, false, /*modifier keys*/
+            0/*button=left*/, null
+        );
+        this.dispatchEvent(ev);
+    };
+}
+
+function isVisible(el) {
+    // Test for visibility
+    return el.offsetWidth > 0 || el.offsetHeight > 0;
 }
