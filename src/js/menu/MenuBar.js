@@ -8,8 +8,9 @@ L.DNC.MenuBar = L.Class.extend({
     },
 
     // Add object as child. Object must have domElement property.
-    addChild: function ( child ) {
-        this.domElement.appendChild(child.domElement);
+    addChild: function ( child, target ) {
+        target = target || this.domElement;
+        target.appendChild(child.domElement);
         child.parentDomElement = this;
         this.children.push( child );
         return this;
